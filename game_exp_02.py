@@ -51,30 +51,30 @@ while True:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                print("left")
-                ball_x -= 15
-            if event.key == pygame.K_DOWN:
-                print("down")
-                ball_y += 15
-                
-            if event.key == pygame.K_RIGHT:
-                print("right")
-                ball_x += 15
-            if event.key == pygame.K_UP:
-                print("up")
-                ball_y -= 15
+            pass
+            # if event.key == pygame.K_LEFT:
+            #     print("left")
+            #     ball_x -= 15
+            # if event.key == pygame.K_DOWN:
+            #     print("down")
+            #     ball_y += 15
+            # if event.key == pygame.K_RIGHT:
+            #     print("right")
+            #     ball_x += 15
+            # if event.key == pygame.K_UP:
+            #     print("up")
+            #     ball_y -= 15
     
     
-    ball_rect = pygame.Rect(
-        ball_x,
-        ball_y,
-        BALL_WIDTH_HEIGHT,
-        BALL_WIDTH_HEIGHT
-    )
+    # ball_rect = pygame.Rect(
+    #     ball_x,
+    #     ball_y,
+    #     BALL_WIDTH_HEIGHT,
+    #     BALL_WIDTH_HEIGHT
+    # )
 
-    if ball_rect.colliderect(target_rect):
-        print("collision!")
+    # if ball_rect.colliderect(target_rect):
+    #     print("collision!")
 
     window.fill(BLACK)
 
@@ -93,6 +93,24 @@ while True:
         )
     )
 
+    keyPressedTuple = pygame.key.get_pressed()
+    aIsDown = keyPressedTuple[pygame.K_a]
+    dIsDown = keyPressedTuple[pygame.K_d]
+    wIsDown = keyPressedTuple[pygame.K_w]
+    sIsDown = keyPressedTuple[pygame.K_s]
+
+    if aIsDown:
+        ball_x -= N_PIXELS_TO_MOVE
+
+    if dIsDown:
+        ball_x += N_PIXELS_TO_MOVE
+
+    if wIsDown:
+        ball_y -= N_PIXELS_TO_MOVE
+
+    if sIsDown:
+        ball_y += N_PIXELS_TO_MOVE
+    
     pygame.display.update()
     clock.tick(FRAMES_PER_SECOND)
 
