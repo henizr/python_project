@@ -34,6 +34,42 @@ while True:
     # Clear the window
     window.fill(BLACK)
 
+    # Drawing primitives
+    # Line
+    pygame.draw.line(
+        window,      # the surface where 
+        (255, 0, 0), # color
+        (10, 10),    # start position
+        (100, 30),   # end position
+        4            # width
+    )
+
+    # Circle
+    pygame.draw.circle(
+        surface = window,
+        color = (0, 255, 0),
+        center = (100, 300),
+        radius = 50,
+        width = 0
+    )
+
+    # Rectangle
+    pygame.draw.rect(
+        window,
+        (100, 0, 0),
+        (250, 150, 100, 50),
+        0
+    )
+
+
+    # Ellipse
+    pygame.draw.ellipse(
+        window,
+        (100, 100, 0),
+        (250, 250, 80, 40),
+        11
+    )
+
     # Update the window
     pygame.display.update()
 

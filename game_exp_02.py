@@ -7,8 +7,8 @@ import pathlib
 
 # Declare constants
 BLACK = (0, 0, 0)
-WINDOW_WIDTH = 640
-WINDOW_HEIGHT = 480
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
 FRAMES_PER_SECOND = 30
 BALL_WIDTH_HEIGHT = 150
 MAX_WIDTH = WINDOW_WIDTH - BALL_WIDTH_HEIGHT
@@ -16,7 +16,7 @@ MAX_HEIGHT = WINDOW_HEIGHT - BALL_WIDTH_HEIGHT
 TARGET_X = 300
 TARGET_Y = 10
 TARGET_WIDTH_HEIGHT = 250
-N_PIXELS_TO_MOVE = 3
+N_PIXELS_TO_MOVE = 10
 BASE_PATH = pathlib.Path(__file__).resolve().parent
 IMAGES_FOLDER = pathlib.Path("img").resolve()
 SOUNDS_FOLDER = pathlib.Path("sounds").resolve()
@@ -30,13 +30,15 @@ clock = pygame.time.Clock()
 # Load assets
 ball_image: pygame.Surface = pygame.image.load(BASE_PATH / IMAGES_FOLDER / "ball.png")
 target: pygame.Surface = pygame.image.load(BASE_PATH / IMAGES_FOLDER / "plain.png")
-bounceSound = pygame.mixer.Sound("")
+bounceSound = pygame.mixer.Sound(BASE_PATH / SOUNDS_FOLDER / "pingPong.wav")
+pygame.mixer.music.load(BASE_PATH / SOUNDS_FOLDER / "bgMusic.wav")
+pygame.mixer.music.play(-1, 0.0)
 
 # Initialize variables
 ball_x = random.randrange(MAX_WIDTH)
 ball_y = random.randrange(MAX_HEIGHT)
-xSpeedBall = 5
-ySpeedBall = 5
+xSpeedBall = 15
+ySpeedBall = 15
 
 
 # Create a target rect
@@ -48,6 +50,8 @@ target_rect = pygame.Rect(
 )
 ball_rect = ball_image.get_rect()
 
+
+# Main gameloop
 while True:
     # Event loop
     for event in pygame.event.get():
@@ -100,9 +104,12 @@ while True:
     
     if ball_rect.left < 0 or ball_rect.right >= WINDOW_WIDTH:
         xSpeedBall = -xSpeedBall
+        bounceSound.play()
 
     if ball_rect.bottom >= WINDOW_HEIGHT or ball_rect.top < 0:
         ySpeedBall = -ySpeedBall
+        bounceSound.play()
+
 
     window.blit(
         ball_image,
