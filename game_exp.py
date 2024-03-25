@@ -16,6 +16,13 @@ TARGET_X = 400
 TARGET_Y = 500
 TARGET_WIDTH_HEIGHT = 180
 N_PIXELS_TO_MOVE = 3
+RECT_X = 0
+RECT_Y = 0
+RECT_CHANGE_X = 11
+RECT_CHANGE_Y = 11
+RECT_SIZE_X = 100
+RECT_SIZE_Y = 100
+
 
 # Initialize pygame
 pygame.init()
@@ -75,6 +82,19 @@ while True:
         (1,10),
         (500, 90),
     )
+
+    pygame.draw.rect(
+        window,
+        (0, 0, 255),
+        (RECT_X, RECT_Y, RECT_SIZE_X, RECT_SIZE_Y),
+    )
+
+    RECT_X, RECT_Y = RECT_X + RECT_CHANGE_X, RECT_Y + RECT_CHANGE_Y
+
+    if RECT_Y + RECT_SIZE_Y >= WINDOW_HEIGHT or RECT_Y <= 0:
+        RECT_CHANGE_Y = -RECT_CHANGE_Y
+    if RECT_X + RECT_SIZE_X >= WINDOW_WIDTH or RECT_X <= 0:
+        RECT_CHANGE_X = -RECT_CHANGE_X
 
     # Update the window
     pygame.display.update()
