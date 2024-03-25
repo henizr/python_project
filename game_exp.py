@@ -61,13 +61,19 @@ while True:
         0
     )
 
-
     # Ellipse
     pygame.draw.ellipse(
         window,
         (100, 100, 0),
         (250, 250, 80, 40),
         11
+    )
+
+    pygame.draw.aaline(
+        window,
+        (155, 155, 155),
+        (1,10),
+        (500, 90),
     )
 
     # Update the window
