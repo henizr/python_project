@@ -4,6 +4,7 @@ import sys
 from pygame.locals import *
 import random
 import pathlib
+from Ball import *
 
 # Declare constants
 BLACK = (0, 0, 0)
@@ -60,18 +61,7 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             pass
-            # if event.key == pygame.K_LEFT:
-            #     print("left")
-            #     ball_x -= 15
-            # if event.key == pygame.K_DOWN:
-            #     print("down")
-            #     ball_y += 15
-            # if event.key == pygame.K_RIGHT:
-            #     print("right")
-            #     ball_x += 15
-            # if event.key == pygame.K_UP:
-            #     print("up")
-            #     ball_y -= 15
+
     
 
 
