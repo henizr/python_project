@@ -1,0 +1,17 @@
+import pathlib
+
+# Declare constants
+BLACK = (0, 0, 0)
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
+FRAMES_PER_SECOND = 30
+BALL_WIDTH_HEIGHT = 150
+MAX_WIDTH = WINDOW_WIDTH - BALL_WIDTH_HEIGHT
+MAX_HEIGHT = WINDOW_HEIGHT - BALL_WIDTH_HEIGHT
+TARGET_X = 300
+TARGET_Y = 10
+TARGET_WIDTH_HEIGHT = 250
+N_PIXELS_TO_MOVE = 10
+BASE_PATH = pathlib.Path(__file__).resolve().parent
+IMAGES_FOLDER = pathlib.Path("img").resolve()
+SOUNDS_FOLDER = pathlib.Path("sounds").resolve()
