@@ -34,9 +34,9 @@ class Ball():
         self.x += self.xSpeed
         self.y += self.ySpeed
 
-        if self.x > self.windowWidth or self.x < 0:
+        if self.x > self.maxWidth or self.x < 0:
             self.xSpeed = -self.xSpeed
-        if self.y > self.windowHeight or self.y < 0:
+        if self.y > self.maxHeight or self.y < 0:
             self.ySpeed = -self.ySpeed
 
     def draw(self):

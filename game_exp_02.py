@@ -5,6 +5,7 @@ from pygame.locals import *
 import random
 from Ball import Ball
 from constants import *
+from simpleButton import SimpleButton
 
 
 # Initializing the environment
@@ -41,6 +42,14 @@ for i in range(5):
     )
     ball_list.append(ball)
 
+simpleButton = SimpleButton(
+    window,
+    (190, 50),
+    BASE_PATH / IMAGES_FOLDER / "play_button.png",
+    BASE_PATH / IMAGES_FOLDER / "play_button_pushed.png"
+)
+
+
 
 # Main gameloop
 while True:
@@ -52,14 +61,23 @@ while True:
         elif event.type == pygame.KEYDOWN:
             pass
 
-    for ball in ball_list:
-        ball.update()
+        if simpleButton.handleEvent(event):
+            GAME_ACTIVE = False
+        else:
+            GAME_ACTIVE = True
+
+    if GAME_ACTIVE:
+        for ball in ball_list:
+            ball.update()
 
     window.fill(BLACK)
 
     
     for ball in ball_list:
         ball.draw()
+
+    simpleButton.draw()
+
 
 
 
