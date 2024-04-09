@@ -6,6 +6,7 @@ import random
 from Ball import Ball
 from constants import *
 from simpleButton import SimpleButton
+from simpleText import SimpleText
 
 
 # Initializing the environment
@@ -49,7 +50,25 @@ simpleButton = SimpleButton(
     BASE_PATH / IMAGES_FOLDER / "play_button_pushed.png"
 )
 
+simpleText = SimpleText(
+    window,
+    (180, 212),
+    "Score: 12180",
+    "white"
+)
+greeting_txt = SimpleText(
+    window,
+    (380, 312),
+    "Hi",
+    "white"
+)
 
+entrance_txt = SimpleText(
+    window,
+    (250, 282),
+    "WELLCOME",
+    "white"
+)
 
 # Main gameloop
 while True:
@@ -62,9 +81,7 @@ while True:
             pass
 
         if simpleButton.handleEvent(event):
-            GAME_ACTIVE = False
-        else:
-            GAME_ACTIVE = True
+            pass
 
     if GAME_ACTIVE:
         for ball in ball_list:
@@ -77,6 +94,9 @@ while True:
         ball.draw()
 
     simpleButton.draw()
+    simpleText.draw()
+    greeting_txt.draw()
+    entrance_txt.draw()
 
 
 
