@@ -1,5 +1,7 @@
 import pygame
 from pygame.locals import *
+from collections import namedtuple
+
 
 class SimpleButton():
     STATE_IDLE = 'idle'
@@ -11,18 +13,18 @@ class SimpleButton():
             window: pygame.Surface,
             location,
             img_up,
-            img_down
+            img_down,
     ) -> None:
         self.window = window
         self.location = location
         self.surface_up = pygame.image.load(img_up)
         self.surface_down = pygame.image.load(img_down)
-
         self.rect = self.surface_up.get_rect()
         self.rect.x = location[0]
         self.rect.y = location[1]
 
         self.state = SimpleButton.STATE_IDLE
+
 
     def handleEvent(self, event_object):
         if event_object.type not in (
@@ -31,10 +33,11 @@ class SimpleButton():
             MOUSEBUTTONDOWN
         ):
             return False
-        print(event_object.pos)
-        print(1)
+        
         event_point_in_button_rect = self.rect.collidepoint(event_object.pos)
 
+        
+        print("collide")
 
         if self.state == SimpleButton.STATE_IDLE:
             if event_object.type == MOUSEBUTTONDOWN and event_point_in_button_rect:

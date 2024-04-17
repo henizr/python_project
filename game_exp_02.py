@@ -5,7 +5,7 @@ from pygame.locals import *
 import random
 from Ball import Ball
 from constants import *
-from simpleButton import SimpleButton
+from SimplуButton_04 import SimpleButton
 from simpleText import SimpleText
 
 
@@ -79,9 +79,9 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             pass
-
+        
         if simpleButton.handleEvent(event):
-            pass
+             pass
 
     if GAME_ACTIVE:
         for ball in ball_list:
